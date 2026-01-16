@@ -5,11 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import { authClient } from "@/lib/auth-client";
 import { requireAuth } from "@/lib/auth-utils";
 import { caller } from "@/trpc/server";
+import { cookies } from "next/headers";
 
 
 const Home = async () => {
 
   await requireAuth();
+
   const data = await caller.getUsers();
   return (
     <div >
